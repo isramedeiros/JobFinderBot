@@ -8,14 +8,16 @@ import io.github.cdimascio.dotenv.Dotenv;
 
 public class Application {
     public static void main(String[] args) {
-        // instantiating the application
         Dotenv dotenv = Dotenv.load();
         String botToken = dotenv.get("BOT_TOKEN");
 
+        TelegramBotsLongPollingApplication botsApplication = new TelegramBotsLongPollingApplication();
+
         try {
-            TelegramBotsLongPollingApplication botsApplication = new TelegramBotsLongPollingApplication();
-            botsApplication.registerBot(botToken, new JobFinderBot());
-        } catch (TelegramApiException e) {
+            botsApplication.registerBot(botToken, new JobFinderBot(botToken));
+            System.out.println("Bot successfully started! ");
+            new java.util.concurrent.CountDownLatch(1).await();
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
