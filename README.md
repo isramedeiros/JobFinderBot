@@ -71,8 +71,7 @@ User → Bot → API → JSON → Parser → Message
 
 ### Start the bot
 
-Open Telegram and search for @jobsbrasil_bot
-https://t.me/jobsbrasil_bot
+Open Telegram and search for your bot username.
 
 Send:
 
